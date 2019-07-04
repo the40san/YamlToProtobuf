@@ -13,7 +13,7 @@ Protobufはゲームのマスターデータとして使うのを想定してま
 ├── Dockerfile
 ├── README.md
 ├── YamlToProtobuf.csproj
-├── grpc
+├── generated_codes
 ├── out
 ├── protos
 ├── src
@@ -25,7 +25,7 @@ Protobufはゲームのマスターデータとして使うのを想定してま
 
 ## 各種説明
 
-- `grpc` protobufから生成されたC#コードの出力先です
+- `generated_codes` protobufから生成されたC#コードの出力先です
 - `out` protobufのbytearrayが書かれたデータファイルの出力先です
 - `protos` ここにprotobufの定義を書いて入れておくといい感じになります
 - `src` ジェネレータやパーサーなどのコードになります
@@ -44,7 +44,7 @@ Protobufはゲームのマスターデータとして使うのを想定してま
 ## おすすめインストール
 
 .git消して適当なディレクトリにcpする
-grpcディレクトリを自分にプロジェクトの任意の場所にsymlink貼る
+generated_codes ディレクトリを自分にプロジェクトの任意の場所にsymlink貼る
 
 
 # 使い方
