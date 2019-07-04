@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using YamlDotNet.RepresentationModel;
 using YamlToProtobuf.BuildTasks;
+using YamlToProtobuf.Converter;
 
 namespace YamlToProtobuf.ConvertTasks
 {
@@ -31,6 +32,12 @@ namespace YamlToProtobuf.ConvertTasks
                     convertResult.Add(testValue);
                 }
             }
+
+            var testValues = new TestValueAll();
+            testValues.TestValues.AddRange(convertResult);
+
+            ProtobufWriter.WriteTo(testValues, "testValues");
+
 
             return ConvertResult.Success;
         }

@@ -21,11 +21,13 @@ public static partial class TestValueReflection {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
           "ChB0ZXN0X3ZhbHVlLnByb3RvIiMKCVRlc3RWYWx1ZRIKCgJ2MRgBIAEoDRIK",
-          "CgJ2MhgCIAEoDWIGcHJvdG8z"));
+          "CgJ2MhgCIAEoDSIuCgxUZXN0VmFsdWVBbGwSHgoKdGVzdFZhbHVlcxgBIAMo",
+          "CzIKLlRlc3RWYWx1ZWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::TestValue), global::TestValue.Parser, new[]{ "V1", "V2" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::TestValue), global::TestValue.Parser, new[]{ "V1", "V2" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::TestValueAll), global::TestValueAll.Parser, new[]{ "TestValues" }, null, null, null)
         }));
   }
   #endregion
@@ -169,6 +171,115 @@ public sealed partial class TestValue : pb::IMessage<TestValue> {
         }
         case 16: {
           V2 = input.ReadUInt32();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+public sealed partial class TestValueAll : pb::IMessage<TestValueAll> {
+  private static readonly pb::MessageParser<TestValueAll> _parser = new pb::MessageParser<TestValueAll>(() => new TestValueAll());
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<TestValueAll> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::TestValueReflection.Descriptor.MessageTypes[1]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public TestValueAll() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public TestValueAll(TestValueAll other) : this() {
+    testValues_ = other.testValues_.Clone();
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public TestValueAll Clone() {
+    return new TestValueAll(this);
+  }
+
+  /// <summary>Field number for the "testValues" field.</summary>
+  public const int TestValuesFieldNumber = 1;
+  private static readonly pb::FieldCodec<global::TestValue> _repeated_testValues_codec
+      = pb::FieldCodec.ForMessage(10, global::TestValue.Parser);
+  private readonly pbc::RepeatedField<global::TestValue> testValues_ = new pbc::RepeatedField<global::TestValue>();
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public pbc::RepeatedField<global::TestValue> TestValues {
+    get { return testValues_; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as TestValueAll);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(TestValueAll other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if(!testValues_.Equals(other.testValues_)) return false;
+    return true;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    hash ^= testValues_.GetHashCode();
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    testValues_.WriteTo(output, _repeated_testValues_codec);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    size += testValues_.CalculateSize(_repeated_testValues_codec);
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(TestValueAll other) {
+    if (other == null) {
+      return;
+    }
+    testValues_.Add(other.testValues_);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          input.SkipLastField();
+          break;
+        case 10: {
+          testValues_.AddEntriesFrom(input, _repeated_testValues_codec);
           break;
         }
       }
