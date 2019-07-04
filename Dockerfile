@@ -15,4 +15,5 @@ FROM microsoft/dotnet
 WORKDIR /app
 COPY --from=build-env /app/out .
 COPY --from=build-env /app/yaml yaml
+VOLUME /app/out 
 CMD ["dotnet", "YamlToProtobuf.dll"]
